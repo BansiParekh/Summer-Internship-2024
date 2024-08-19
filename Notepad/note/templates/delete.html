@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if messages %}
+{%for message in messages %}
+<p class="msg bg-light">{{message}}</p>
+{% endfor %}
+{% else %}
+<div id="updateForm">
+    <form method = "POST">
+        {% csrf_token %}
+        <label for="inputText4" class="form-label"><strong>Heading:</strong></label>
+        <!-- <input class="form-control" type="text" name="heading" id="heading"> -->
+
+        {{form.title}}
+        <br>
+
+            <label for="exampleFormControlTextarea1" class="form-label"><strong>Notes:</strong></label>
+            <!-- <div>
+                <textarea class="form-control">Enter Notes</textarea>
+            </div> -->
+            {{form.text}}
+            <br>
+
+      <div class="d-grip gap-2 mb-2">
+        <button class="btn btn-danger" type="submit" style="width: 100%;">Delete</button>
+    </div>
+ </form>
+
+</div>
+{% endif %}
+{% endblock %}
